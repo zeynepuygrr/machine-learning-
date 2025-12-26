@@ -215,3 +215,5 @@ models/
 metrics/
 mlflow_ui.log
 mlflow_server.log
+.idea/
+mlflow.db
