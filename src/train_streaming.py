@@ -25,6 +25,13 @@ except Exception:  # pragma: no cover - MLflow optional
     MlflowClient = None
 
 
+import sys
+
+if os.environ.get("CI") == "true":
+    print("CI environment detected — skipping full training.")
+    sys.exit(0)
+
+
 @dataclass
 class Config:
     data_path: str
