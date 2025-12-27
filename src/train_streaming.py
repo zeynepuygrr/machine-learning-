@@ -27,9 +27,13 @@ except Exception:  # pragma: no cover - MLflow optional
 
 import sys
 
+
 if os.environ.get("CI") == "true":
-    print("CI environment detected — skipping full training.")
-    sys.exit(0)
+    print("CI environment detected — running tiny training (1 chunk) to produce artifacts.")
+    os.environ.setdefault("MAX_TRAIN_CHUNKS", "1")
+    os.environ.setdefault("VAL_ROWS", "10000")
+    os.environ.setdefault("N_ESTIMATORS", "1")
+
 
 
 @dataclass
